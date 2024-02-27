@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class InventoryPOM {
     WebDriver driver;
@@ -35,12 +36,29 @@ public class InventoryPOM {
         }
         return temp;
     }
+    
+    public List<String> getAllItemPrices(){
+        List<String> temp = new ArrayList<>();
+        List<WebElement> divElements = driver.findElements(By.className("inventory_item_price"));
+
+        for (WebElement webElement : divElements) {
+            String divText = webElement.getText();
+            temp.add(divText.replace("$", "").trim());
+        }
+        return temp;
+    }
 
     public void addAllItemsToCart(){
         List<String> items = getAllItemNames();
         for (String item : items) {
             driver.findElement(By.name("add-to-cart-" + item.replace(" ", "-").toLowerCase())).click();
         }
+    }
+
+    public void selectSorting(String sorting){
+        WebElement dropdown = driver.findElement(By.className("product_sort_container"));
+        Select select = new Select(dropdown);
+        select.selectByVisibleText(sorting);
     }
 
     public void logout() throws InterruptedException{

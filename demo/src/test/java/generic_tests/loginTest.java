@@ -1,4 +1,4 @@
-package login;
+package generic_tests;
 
 import java.util.List;
 import java.util.Arrays;

@@ -10,10 +10,10 @@ import POM.CartPOM;
 import POM.CheckoutPOM;
 import POM.InventoryPOM;
 import POM.LoginPOM;
-import Util.Constants;
+import Util.Parameters;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class buyItems {
+public class buyItemsTest {
     WebDriver driver;
 
     @BeforeTest
@@ -34,7 +34,7 @@ public class buyItems {
         InventoryPOM inventoryPOM = new InventoryPOM(driver);
         CartPOM cartPOM = new CartPOM(driver);
         CheckoutPOM checkoutPOM = new CheckoutPOM(driver);
-        loginPOM.typeUsername(Constants.usernName);
+        loginPOM.typeUsername(Parameters.userName);
         loginPOM.typePassword("secret_sauce");
         loginPOM.clickLogin();
         inventoryPOM.addItemToCart("Sauce Labs Backpack");
@@ -53,7 +53,7 @@ public class buyItems {
         InventoryPOM inventoryPOM = new InventoryPOM(driver);
         CartPOM cartPOM = new CartPOM(driver);
         CheckoutPOM checkoutPOM = new CheckoutPOM(driver);
-        loginPOM.typeUsername(Constants.usernName);
+        loginPOM.typeUsername(Parameters.userName);
         loginPOM.typePassword("secret_sauce");
         loginPOM.clickLogin();
         inventoryPOM.addAllItemsToCart();
