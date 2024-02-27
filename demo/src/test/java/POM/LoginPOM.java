@@ -30,4 +30,12 @@ public class LoginPOM {
     public void clickLogin(){
         driver.findElement(By.id(loginButtonID)).click();
     }
+
+    public void CheckLogin() {
+        Assert.assertEquals(driver.getCurrentUrl(), InventoryPOM.inventoryUrl);
+    }
+    public void ConfirmErrorMessage(String message){
+        String bodyText = driver.findElement(By.tagName("body")).getText();
+        Assert.assertTrue(bodyText.contains(message), "Text not found!");
+    }
 }
