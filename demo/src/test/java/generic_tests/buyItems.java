@@ -45,4 +45,23 @@ public class buyItems {
         checkoutPOM.clickFinish();
         checkoutPOM.confimSuccessfulOrder();
     }
+
+    @Test
+    public void buyAllItems(){
+        driver.get(LoginPOM.loginURL);
+        LoginPOM loginPOM = new LoginPOM(driver);
+        InventoryPOM inventoryPOM = new InventoryPOM(driver);
+        CartPOM cartPOM = new CartPOM(driver);
+        CheckoutPOM checkoutPOM = new CheckoutPOM(driver);
+        loginPOM.typeUsername(Constants.usernName);
+        loginPOM.typePassword("secret_sauce");
+        loginPOM.clickLogin();
+        inventoryPOM.addAllItemsToCart();
+        inventoryPOM.clickShoppingCart();
+        cartPOM.clickCheckout();
+        checkoutPOM.fillInYourInfo("Usaamah", "Kriel", "7405"); 
+        checkoutPOM.clickContinue();
+        checkoutPOM.clickFinish();
+        checkoutPOM.confimSuccessfulOrder();
+    }
 }

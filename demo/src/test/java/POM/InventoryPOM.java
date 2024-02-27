@@ -1,7 +1,11 @@
 package POM;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class InventoryPOM {
     WebDriver driver;
@@ -19,6 +23,24 @@ public class InventoryPOM {
 
     public void clickShoppingCart(){
         driver.findElement(By.id("shopping_cart_container")).click();
+    }
+
+    public List<String> getAllItemNames(){
+        List<String> temp = new ArrayList<>();
+        List<WebElement> divElements = driver.findElements(By.className("inventory_item_name"));
+
+        for (WebElement webElement : divElements) {
+            String divText = webElement.getText();
+            temp.add(divText);
+        }
+        return temp;
+    }
+
+    public void addAllItemsToCart(){
+        List<String> items = getAllItemNames();
+        for (String item : items) {
+            driver.findElement(By.name("add-to-cart-" + item.replace(" ", "-").toLowerCase())).click();
+        }
     }
 
     public void logout() throws InterruptedException{
