@@ -1,7 +1,9 @@
 package POM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -47,6 +49,17 @@ public class InventoryPOM {
             temp.add(divText.replace("$", "").trim());
         }
         return temp;
+    }
+
+    public void clickProductName(String productName){
+        Map<String, String> map = new HashMap<>();
+        map.put("Sauce Labs Backpack", "item_4_title_link");
+        map.put("Sauce Labs Bike Light", "item_0_title_link");
+        map.put("Sauce Labs Bolt T-Shirt", "item_1_title_link");
+        map.put("Sauce Labs Fleece Jacket", "item_5_title_link");
+        map.put("Sauce Labs Onesie", "item_2_title_link");
+        map.put("Test.allTheThings() T-Shirt (Red)", "item_3_title_link");
+        driver.findElement(By.id(map.get(productName))).click();
     }
 
     public void addAllItemsToCart(){
