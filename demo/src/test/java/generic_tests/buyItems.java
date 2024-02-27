@@ -1,4 +1,4 @@
-package locked_out_user;
+package generic_tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,10 +6,14 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import POM.CartPOM;
+import POM.CheckoutPOM;
+import POM.InventoryPOM;
 import POM.LoginPOM;
+import Util.Constants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class loginTest {
+public class buyItems {
     WebDriver driver;
 
     @BeforeTest
@@ -24,12 +28,21 @@ public class loginTest {
     }
 
     @Test
-    public void logintest() {
+    public void buyAnItem(){
         driver.get(LoginPOM.loginURL);
         LoginPOM loginPOM = new LoginPOM(driver);
-        loginPOM.typeUsername("locked_out_user");
+        InventoryPOM inventoryPOM = new InventoryPOM(driver);
+        CartPOM cartPOM = new CartPOM(driver);
+        CheckoutPOM checkoutPOM = new CheckoutPOM(driver);
+        loginPOM.typeUsername(Constants.usernName);
         loginPOM.typePassword("secret_sauce");
         loginPOM.clickLogin();
-        loginPOM.ConfirmErrorMessage("Epic sadface: Sorry, this user has been locked out.");
+        inventoryPOM.addItemToCart("Sauce Labs Backpack");
+        inventoryPOM.clickShoppingCart();
+        cartPOM.clickCheckout();
+        checkoutPOM.fillInYourInfo("Usaamah", "Kriel", "7405"); 
+        checkoutPOM.clickContinue();
+        checkoutPOM.clickFinish();
+        checkoutPOM.confimSuccessfulOrder();
     }
 }
