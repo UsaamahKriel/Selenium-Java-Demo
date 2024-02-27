@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class InventoryPOM {
     WebDriver driver;
@@ -59,6 +60,18 @@ public class InventoryPOM {
         WebElement dropdown = driver.findElement(By.className("product_sort_container"));
         Select select = new Select(dropdown);
         select.selectByVisibleText(sorting);
+    }
+
+    public void removeAllItemsFromCart(){
+        List<String> items = getAllItemNames();
+        for (String item : items) {
+            driver.findElement(By.id("remove-" + item.replace(" ", "-").toLowerCase())).click();
+        }
+    }
+
+    public void confirmNoItemsInCart(){
+        Assert.assertTrue(driver.findElements(By.className("shopping_cart_badge")).size() == 0);    
+        Assert.assertFalse(driver.findElement(By.tagName("body")).getText().contains("Remove"));
     }
 
     public void logout() throws InterruptedException{

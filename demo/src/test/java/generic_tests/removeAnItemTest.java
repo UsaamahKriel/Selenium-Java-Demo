@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import POM.InventoryPOM;
 import POM.LoginPOM;
+import Util.Parameters;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class removeAnItemTest {
@@ -28,4 +29,13 @@ public class removeAnItemTest {
         driver.quit();
     }
     @Test
+    public void removeAllItems(){
+        driver.get(LoginPOM.loginURL);
+        loginPOM.typeUsername(Parameters.userName);
+        loginPOM.typePassword("secret_sauce");
+        loginPOM.clickLogin();
+        inventoryPOM.addAllItemsToCart();
+        inventoryPOM.removeAllItemsFromCart();
+        inventoryPOM.confirmNoItemsInCart();
+    }
 }
