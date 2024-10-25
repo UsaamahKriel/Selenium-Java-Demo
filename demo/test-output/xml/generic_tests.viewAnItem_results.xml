@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-b5c7754a-919d-43f4-9195-cd31e056a55d"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="4,662">
+    <properties></properties>
+
+
+
+            <testcase
+                name="viewAllItems"
+                time="4,662"
+                classname="generic_tests.viewAnItem">
+            </testcase>
+</testsuite>

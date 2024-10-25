@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-b5c7754a-919d-43f4-9195-cd31e056a55d"
+           tests="4"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="6,665">
+    <properties></properties>
+
+
+
+            <testcase
+                name="sortpriceDsc"
+                time="1,718"
+                classname="generic_tests.sortingTest">
+            </testcase>
+            <testcase
+                name="sortAlphabeticalAsc"
+                time="2,553"
+                classname="generic_tests.sortingTest">
+            </testcase>
+            <testcase
+                name="sortAlphabeticalDsc"
+                time="1,000"
+                classname="generic_tests.sortingTest">
+            </testcase>
+            <testcase
+                name="sortpriceAsc"
+                time="1,394"
+                classname="generic_tests.sortingTest">
+            </testcase>
+</testsuite>

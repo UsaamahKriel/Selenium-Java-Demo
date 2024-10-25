@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-b5c7754a-919d-43f4-9195-cd31e056a55d"
+           tests="3"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="32,535">
+    <properties></properties>
+
+
+
+            <testcase
+                name="loginInvalidPassword"
+                time="3,074"
+                classname="generic_tests.loginTest">
+            </testcase>
+            <testcase
+                name="loginInvalidUsername"
+                time="0,507"
+                classname="generic_tests.loginTest">
+            </testcase>
+            <testcase
+                name="logintest"
+                time="28,954"
+                classname="generic_tests.loginTest">
+            </testcase>
+</testsuite>

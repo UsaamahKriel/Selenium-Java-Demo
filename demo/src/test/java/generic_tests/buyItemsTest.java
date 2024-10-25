@@ -2,6 +2,9 @@ package generic_tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -10,25 +13,26 @@ import POM.CartPOM;
 import POM.CheckoutPOM;
 import POM.InventoryPOM;
 import POM.LoginPOM;
+import Util.BaseTest;
 import Util.Parameters;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class buyItemsTest {
-    WebDriver driver;
+public class buyItemsTest extends BaseTest {
 
-    @BeforeTest
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(); // setting up the driver
-    }
+    // @BeforeTest
+    // public void setup() {
+    //     WebDriverManager.chromedriver().setup();
+    //     driver = new ChromeDriver(); // setting up the driver
+    // }
 
-    @AfterTest
-    public void teardown() {
-        driver.quit();
-    }
+    // @AfterMethod
+    // public void teardown(ITestResult result) {
+    //     BaseTest.TearDown(driver, result);
+    //    // driver.quit();
+    // }
 
     @Test
-    public void buyAnItem(){
+      public void buyAnItem(){
         driver.get(LoginPOM.loginURL);
         LoginPOM loginPOM = new LoginPOM(driver);
         InventoryPOM inventoryPOM = new InventoryPOM(driver);

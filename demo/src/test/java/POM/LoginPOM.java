@@ -13,7 +13,7 @@ public class LoginPOM {
     private String passwordID = "password";
     private String loginButtonID = "login-button";
     private WebDriver driver;
-    public static String loginURL = "https://qa-challenge.codesubmit.io";
+    public static String loginURL = "https://www.saucedemo.com/";
 
     public LoginPOM(WebDriver driver){
         this.driver = driver;
