@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-c28708f4-6a36-4d95-a6b1-eda4810bbb77"
+<testsuite name="TestNGTest-02589381-fb4e-4deb-8d1e-ad4bedf250c4"
            tests="1"
            failures="0"
            errors="0"
            skipped="0"
-           time="2,687">
+           time="3,029">
     <properties></properties>
 
 
 
             <testcase
                 name="buyAnItem"
-                time="2,687"
+                time="3,029"
                 classname="generic_tests.buyItemsTest">
             </testcase>
 </testsuite>

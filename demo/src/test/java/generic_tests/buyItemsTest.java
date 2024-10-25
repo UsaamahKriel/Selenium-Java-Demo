@@ -15,7 +15,6 @@ import POM.InventoryPOM;
 import POM.LoginPOM;
 import Util.BaseTest;
 import Util.Parameters;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class buyItemsTest extends BaseTest {
 
@@ -31,7 +30,7 @@ public class buyItemsTest extends BaseTest {
     //    // driver.quit();
     // }
 
-    @Test
+    @Test(testName = "Buy an item")
       public void buyAnItem(){
         driver.get(LoginPOM.loginURL);
         LoginPOM loginPOM = new LoginPOM(driver);

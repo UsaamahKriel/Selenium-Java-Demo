@@ -7,6 +7,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
@@ -14,13 +16,25 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class BaseTest {
     protected static WebDriver driver;
+
     @BeforeMethod
-    public void SetUp() {
+    public void SetUp() throws Exception {
+        Dotenv env = Dotenv.load();
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(); 
+        String browser = env.get("BROWSER");
+        if (browser.equalsIgnoreCase("firefox")) {
+            driver = new FirefoxDriver();
+        } else if (browser.equalsIgnoreCase("chrome")) {
+            driver = new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("Edge")) {
+            driver = new EdgeDriver();
+        } else {
+            throw new Exception("Incorrect Browser");
+        }
     }
 
     @AfterMethod
@@ -40,7 +54,8 @@ public class BaseTest {
                 // result.getName() will return name of test case so that screenshot name will
                 // be same
                 try {
-                    FileHandler.copy(source, new File("C:\\Users\\Dell\\Pictures\\DELETE\\" + result.getName()+ "nuggies" + LocalDateTime.now().getMinute() + ".png"));
+                    FileHandler.copy(source, new File("C:\\Users\\Dell\\Pictures\\DELETE\\" + result.getName()
+                            + "nuggies" + LocalDateTime.now().getMinute() + ".png"));
                     System.out.println("Screenshot taken");
                 } finally {
 
